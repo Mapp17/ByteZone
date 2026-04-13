@@ -1,12 +1,5 @@
 {%- doc -%}
   This snippet is used to render a product card.
-  It is used in the product block, featured product block, and the product card block.
-  The product object is null or when placeholders are rendered.
-
-  @param {object} product - The product object
-  @param {object} children - The children of the product card
-  @param {object} [block] - The block object
-  @param {number} [product_card_gap] - The gap between the product card children (overrides block settings)
 {%- enddoc -%}
 
 {% assign block_settings = block.settings %}
@@ -34,7 +27,6 @@
   assign product_card_id = 'product-card-link-' | append: block.id | append: '-' | append: product.id
   assign product_card_gap_value = product_card_gap | default: block_settings.product_card_gap
 
-  # Logic to determine which variant URL to use (matching swatch selection logic)
   assign variant_to_link = product.selected_or_first_available_variant
 
   if settings.transition_to_main_product
@@ -56,7 +48,11 @@
 
 <product-card
   class="product-card size-style"
-  style="{% render 'size-style', settings: block_settings %}"
+  style="
+    border-radius: {{ settings.card_border_radius }}px;
+    overflow: hidden;
+    {% render 'size-style', settings: block_settings %}
+  "
   data-product-id="{{ product.id }}"
   id="product-card-{{ block.id }}"
   {% if settings.transition_to_main_product %}
@@ -81,6 +77,7 @@
       {{ product.title }}
     </span>
   </a>
+
   <div
     class="
       product-card__content
@@ -93,20 +90,53 @@
       {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}
     "
     style="
+      border-radius: {{ settings.card_border_radius }}px;
+
       {% render 'border-override', settings: block_settings %}
       {% render 'layout-panel-style', settings: block_settings %}
       {% render 'spacing-style', settings: block_settings %}
       {% render 'gap-style', value: product_card_gap_value, name: 'product-card-gap' %}
+
       --quick-add-display: {% if has_quick_add %}flex{% else %}none{% endif %};
       --quick-add-mobile-display: {% if has_mobile_quick_add %}flex{% else %}none{% endif %};
       --quick-add-mobile-opacity: {% if has_mobile_quick_add %}1{% else %}0{% endif %};
-      {% if block_settings.padding-inline-start > 0 %}--zoom-out-padding-inline-start: min(var(--padding-xs), {{ block_settings.padding-inline-start | times: 0.7}}px);{% endif %}
-      {% if block_settings.padding-inline-end > 0 %}--zoom-out-padding-inline-end: min(var(--padding-xs), {{ block_settings.padding-inline-end | times: 0.7}}px);{% endif %}
-      {% if block_settings.padding-block-start > 0 %}--zoom-out-padding-block-start: min(var(--padding-xs), {{ block_settings.padding-block-start | times: 0.7}}px);{% endif %}
-      {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
+
+    {%- comment -%}
+      Custom Sale Badge (TOP RIGHT)
+    {%- endcomment -%}
+    {% if settings.show_sale_badges and product.compare_at_price > product.price %}
+      <span
+        class="custom-sale-badge"
+        style="
+          background-color: {{ settings.sale_badge_color }};
+          color: #fff;
+          padding: 4px 8px;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          left: auto;
+          border-radius: 4px;
+          font-size: 12px;
+          z-index: 2;
+        "
+      >
+        Sale
+      </span>
+    {% endif %}
+
+    {%- comment -%}
+      Vendor (conditional)
+    {%- endcomment -%}
+    {% if settings.show_vendor_on_cards %}
+      <p class="product-card__vendor" style="font-size: 12px; opacity: 0.7;">
+        {{ product.vendor }}
+      </p>
+    {% endif %}
+
     {{ children }}
+
   </div>
 </product-card>
 
@@ -124,4 +154,5 @@
       display: none;
     }
   }
+
 {% endstylesheet %}

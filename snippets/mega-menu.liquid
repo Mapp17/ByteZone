@@ -1,0 +1,74 @@
+<ul class="mega-menu">
+  {% for link in linklists['main-menu'].links %}
+    <li class="menu-item {% if link.active %}active{% endif %}">
+      <a href="{{ link.url }}">{{ link.title }}</a>
+      {% if link.links.size > 0 %}
+        <ul class="dropdown">
+          {% for child_link in link.links %}
+            <li class="dropdown-item {% if child_link.active %}active{% endif %}">
+              <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<style>
+.mega-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  position: relative;
+  margin-right: 20px;
+}
+
+.menu-item a {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.menu-item.active > a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item:hover .dropdown {
+  display: block;
+}
+
+.dropdown-item {
+  margin-bottom: 10px;
+}
+
+.dropdown-item a {
+  text-decoration: none;
+}
+
+.dropdown-item.active > a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .mega-menu {
+    display: none;
+  }
+}
+</style>

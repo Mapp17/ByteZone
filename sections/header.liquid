@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign order = 'logo,menu,localization,search,drawer_search,actions'
 
@@ -69,6 +67,12 @@
   capture actions
     render 'header-actions', customer_account_menu: section.settings.customer_account_menu, display_style: section.settings.actions_display_style, section: section
   endcapture
+
+  capture mega_menu
+    render 'mega-menu'
+  endcapture
+
+  assign order = order | append: ',mega_menu'
 
   if shop.customer_accounts_enabled
     assign search_class = 'search-action--hidden-on-drawer'

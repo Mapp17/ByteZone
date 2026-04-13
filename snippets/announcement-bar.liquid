@@ -1,0 +1,5 @@
+{% if settings.show_announcement %}
+    {% if settings.announcement_link != blank %}
+    {{ settings.announcement_text }}
+    {% else %}  {{ settings.announcement_text }} {% endif %}
+{% endif %}
