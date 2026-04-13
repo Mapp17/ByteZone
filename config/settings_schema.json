@@ -2282,7 +2282,67 @@
           }
         ],
         "default": "equal-width-buttons"
+      },
+      {
+        "name": "Store Announcement",
+        "settings": [
+          {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "default": "true"
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "default":"Free shipping on orders over R1000"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bg",
+        "default": "#0a0a23"
+      },
+      {
+        "type": "color",
+        "id": "announcement_text_color",
+        "default":"#FFFFFF"
+      },
+      {
+        "type": "url",
+        "id": "announcement_link",
+        "default": " "
       }
+      ]
+      },
+      {
+        "name": "Product Card Style",
+        "settings": [
+          {
+            "type":"checkbox",
+            "id": "show_sale_badges",
+            "default": true
+          },
+          {
+            "type": "color",
+            "id": "sale_badge_color",
+            "default": "#e53e3e"
+          },
+          {
+            "type":"range",
+            "id":"card_border_radius",
+            "min": "0",
+            "max": "24",
+            "step": "4",
+            "unit": "px",
+            "default": "8"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_vendor_on_cards",
+            "default":true
+          }
+        ]
+      }
+
     ]
   }
 ]
