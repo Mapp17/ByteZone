@@ -77,6 +77,8 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "show_announcement": true,
+    "announcement_bg": "#ff6913",
+    "announcement_text_color": "#000000",
     "announcement_link": "shopify://collections/budget-tech-under-r1000",
     "content_for_index": [],
     "color_schemes": {
