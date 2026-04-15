@@ -11,7 +11,7 @@
     <img 
       src="{{ section.settings.hero_image | img_url: '1200x' }}" 
       alt="{{ section.settings.hero_image.alt | default: section.settings.title | escape }}"
-      loading="lazy"
+      loading="eager"
       width="1200"
       height="600"
       style="object-fit: cover; max-width: 100%; height: auto;"
