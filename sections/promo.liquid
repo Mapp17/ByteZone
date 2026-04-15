@@ -1,4 +1,4 @@
-<script src="{{ 'heavy-lib.js' | asset_url }}" async="false"></script>
+<script src="{{ 'heavy-lib.js' | asset_url }}" defer="true"></script>
 
 <style>
   .promo-section {
@@ -38,7 +38,7 @@
   <p class="promo-body">{{ section.settings.description }}</p>
 
   <img src="{{ section.settings.hero_image | img_url: '1200x' }}" 
-    loading="eager"
+    loading="lazy"
     width="600"
     height="600">
 
@@ -55,7 +55,7 @@
     {% for block in section.blocks %}
       <div class="promo-card" {{ block.shopify_attributes }}>
         <img src="{{ block.settings.card_image | img_url: '400x' }}"
-        loading="eager"
+        loading="lazy"
         width="400"
         height="400"
         >
