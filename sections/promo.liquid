@@ -8,20 +8,18 @@
   <p class="promo-body">{{ section.settings.description | escape }}</p>
 
   {%- if section.settings.hero_image != blank -%}
-  <img 
-    src="{{ section.settings.hero_image | img_url: '1200x' }}" 
-    alt="{{ section.settings.hero_image.alt | default: section.settings.title | escape }}"
-    width="1200"
-    height="600"
-    {%- comment -%} 
-      CRITICAL: fetchpriority="high" tells the browser to start this 
-      download before even parsing the rest of the scripts.
-    {%- endcomment -%}
-    fetchpriority="high"
-    loading="eager"
-    style="object-fit: cover; max-width: 100%; height: auto;"
-  >
-{%- endif -%}
+    <img 
+    srcset="{{ section.settings.hero_image | img_url: '400x' }} 400w,
+            {{ section.settings.hero_image | img_url: '800x' }} 800w,
+            {{ section.settings.hero_image | img_url: '1200x' }} 1200w"
+    sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+      src="{{ section.settings.hero_image | img_url: '1200x' }}" 
+    alt="{{ section.settings.hero_image.alt | escape }}"
+      loading="eager"
+      width="1200"
+      height="600"
+    >
+  {%- endif -%}
   {%- comment -%} Accessibility: Added aria-label to the icon-only button {%- endcomment -%}
   <button class="promo-btn" onclick="doPromo()" aria-label="Activate promotional offer">
     Claim Offer
