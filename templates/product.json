@@ -404,18 +404,10 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "product-electronics": {
-      "type": "product-electronics"
-    },
-    "electronics-metafields-wrapper": {
-      "type": "electronics-metafields-wrapper"
     }
   },
   "order": [
     "main",
-    "product-electronics",
-    "electronics-metafields-wrapper",
     "product_recommendations_qggXJq"
   ]
 }

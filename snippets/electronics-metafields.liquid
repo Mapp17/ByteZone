@@ -17,7 +17,7 @@
 
 {% if has_warranty or has_terms or has_spec or has_energy or has_year or is_refurbished %}
   <div class="product-specs-container">
-    <table class="product-specs-table">
+    <table class="product-specs-table table-striped" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
       <thead>
         <tr>
           <th colspan="2">Product Specifications</th>
@@ -111,3 +111,36 @@
     </table>
   </div>
 {% endif %}
+
+<style>
+  .product-specs-table.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .product-specs-table.table-striped tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .product-specs-table.table-striped tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .product-specs-table.table-striped tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .product-specs-table.table-striped td {
+    padding: 12px;
+  }
+  
+  .product-specs-table.table-striped thead {
+    background-color: #f3f3f3;
+  }
+  
+  .product-specs-table.table-striped thead th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #d0d0d0;
+  }
+</style>
