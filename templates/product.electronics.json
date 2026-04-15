@@ -17,7 +17,8 @@
       }
     },
     "electronics-metafields-wrapper": {
-      "type": "electronics-metafields-wrapper"
+      "type": "electronics-metafields-wrapper",
+      "settings": {}
     }
   },
   "order": [
