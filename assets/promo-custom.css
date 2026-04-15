@@ -28,5 +28,20 @@
     border-radius: 8px;
     padding: 16px;
   }
+  /* Force an aspect ratio so the space is reserved before the image loads */
+.promo-section img {
+  aspect-ratio: 1200 / 600;
+  background: #f0f0f0; /* Visual placeholder to reduce perceived load time */
+  display: block;
+}
 
+.promo-grid img {
+  aspect-ratio: 400 / 600;
+}
+
+/* Fix "Non-composited animations" by using transforms only */
+.product-card {
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
 </style>
