@@ -58,6 +58,7 @@
         "text_YLPk4p",
         "button_H9gpTf"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -90,6 +91,47 @@
         "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
+      }
+    },
+    "promo_fC7hEP": {
+      "type": "promo",
+      "blocks": {
+        "card_BX8dcn": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/asus-vivobook-15-x1504va-laptop-1000px-v0003.webp",
+            "card_title": "Product Name",
+            "card_text": "Short description here."
+          }
+        },
+        "card_LNBK4c": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/dahua-lm24-a201x-24-inch-100hz-led-monitor-1500px-v0002.webp",
+            "card_title": "Product Name",
+            "card_text": "Short description here."
+          }
+        },
+        "card_7VaRaU": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/sm-t865nzaxxfa-tablets-1177107082.webp",
+            "card_title": "Product Name",
+            "card_text": "Short description here."
+          }
+        }
+      },
+      "block_order": [
+        "card_BX8dcn",
+        "card_LNBK4c",
+        "card_7VaRaU"
+      ],
+      "name": "Promo Section",
+      "settings": {
+        "title": "Big Sale Today",
+        "description": "Check out our latest deals.",
+        "hero_image": "shopify://shop_images/asus-vivobook-15-x1504va-laptop-1000px-v0003.webp",
+        "link": "shopify://collections/multi-condition-and-premium-laptops"
       }
     },
     "product_list_fa6P9H": {
@@ -289,6 +331,7 @@
   },
   "order": [
     "hero_jVaWmY",
+    "promo_fC7hEP",
     "product_list_fa6P9H"
   ]
 }
