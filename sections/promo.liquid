@@ -10,12 +10,13 @@
   {%- if section.settings.hero_image != blank -%}
     <img 
     srcset="{{ section.settings.hero_image | img_url: '400x' }} 400w,
-            {{ section.settings.hero_image | img_url: '600x' }} 600w"
-    sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, 1200px"
-      src="{{ section.settings.hero_image | img_url: '600x' }}" 
+            {{ section.settings.hero_image | img_url: '800x' }} 800w,
+            {{ section.settings.hero_image | img_url: '1200x' }} 1200w"
+    sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
+      src="{{ section.settings.hero_image | img_url: '1200x' }}" 
     alt="{{ section.settings.hero_image.alt | escape }}"
       loading="eager"
-      width="600"
+      width="1200"
       height="600"
     >
   {%- endif -%}
