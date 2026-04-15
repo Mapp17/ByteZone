@@ -1,36 +1,6 @@
-<script src="{{ 'heavy-lib.js' | asset_url }}" defer="true"></script>
+<script src="{{ 'heavy-lib.js' | asset_url }}" defer></script>
 
-<style>
-  .promo-section {
-    background: #f0f0f0;
-    padding: 40px 20px;
-  }
-  .promo-title {
-    font-size: 2rem;
-    color: #ccc;
-  }
-  .promo-body {
-    font-size: 1rem;
-    color: #ddd;
-  }
-  .promo-btn {
-    background: #e0e0e0;
-    color: #fff;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-  }
-  .promo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .promo-card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 16px;
-  }
-</style>
+{{ 'promo-custom.css' | asset_url | stylesheet_tag }}
 
 <section class="promo-section">
   <h2 class="promo-title">{{ section.settings.title }}</h2>

@@ -1,0 +1,31 @@
+<style>
+  .promo-section {
+    background: #f0f0f0;
+    padding: 40px 20px;
+  }
+  .promo-title {
+    font-size: 2rem;
+    color: #ccc;
+  }
+  .promo-body {
+    font-size: 1rem;
+    color: #ddd;
+  }
+  .promo-btn {
+    background: #e0e0e0;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+  }
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .promo-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+  }
+</style>
