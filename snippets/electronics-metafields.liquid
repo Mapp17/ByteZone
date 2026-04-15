@@ -1,0 +1,146 @@
+{% comment %}
+  1. ASSIGNMENT & DATA FETCHING
+  Assigning to variables at the top makes the code cleaner and easier to maintain.
+{% endcomment %}
+
+{% assign has_warranty = product.metafields.custom.warranty_months.value %} 
+{% assign has_terms = product.metafields.custom.warranty_terms.value %} 
+{% assign has_spec = product.metafields.custom.spec_sheet.value %} 
+{% assign has_energy = product.metafields.custom.energy_rating.value %} 
+{% assign has_year = product.metafields.custom.release_year.value %} 
+{% assign is_refurbished = product.metafields.custom.is_refurbished.value %} 
+
+{% comment %}
+  2. THE OUTER CONDITIONAL GATE
+  The logic below ensures that if all variables are nil/false, the <div> is never created.
+{% endcomment %}
+
+{% if has_warranty or has_terms or has_spec or has_energy or has_year or is_refurbished %}
+  <div class="product-specs-container">
+    <table class="product-specs-table table-striped" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="2">Product Specifications</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% if has_year %}
+          <tr>
+            <td><strong>Release Year</strong></td>
+            <td>{{ has_year }}</td>
+          </tr>
+        {% endif %}
+
+        {% if is_refurbished == true %}
+          <tr>
+            <td><strong>Condition</strong></td>
+            <td><span class="refurbished-badge" style="background: #ed8936; color: white; padding: 
+                4px 12px; border-radius: 4px; font-size: 0.85rem;"> 
+                Certified Refurbished 
+                </span>
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if has_warranty %}
+          <tr>
+            <td><strong>Warranty</strong></td>
+            <td>{{ has_warranty }} months</td>
+          </tr>
+        {% endif %}
+        {% if has_terms %}
+          <tr>
+            <td><strong>Warranty Terms</strong></td>
+            <td>
+              <div class="rte">
+                {{ product.metafields.custom.warranty_terms | metafield_tag }}
+              </div>
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if has_energy %}
+            {% case has_energy %}
+                {% when 'A++' %}
+                {% assign energy_color = '#38a169' %}
+                {% assign energy_label = 'Excellent Efficiency' %}
+                {% when 'A+' %}
+                {% assign energy_color = '#68d391' %}
+                {% assign energy_label = 'Very Good Efficiency' %}
+                {% when 'A' %}
+                {% assign energy_color = '#ecc94b' %}
+                {% assign energy_label = 'Good Efficiency' %}
+                {% when 'B' %}
+                {% assign energy_color = '#ed8936' %}
+                {% assign energy_label = 'Average Efficiency' %}
+                {% else %}
+                {% assign energy_color = '#e53e3e' %}
+                {% assign energy_label = 'Below Average' %}
+            {% endcase %}
+          <tr>
+            <td><strong>Energy Rating</strong></td>
+            <td>
+                <div class="energy-rating-row" style="margin-top: 10px;">
+                    <strong>Energy Rating:</strong>
+                    <div class="energy-indicator-wrapper" style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
+                    <span class="energy-badge" style="background-color: {{ energy_color }}; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">
+                        {{ has_energy }}
+                    </span>
+                    <span class="energy-description" style="color: {{ energy_color }}; font-size: 0.9rem; font-weight: 500;">
+                        {{ energy_label }}
+                    </span>
+                    </div>
+                </div>
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if has_spec %}
+          <tr>
+            <td><strong>Documentation</strong></td>
+            <td>
+              <a href="{{ product.metafields.custom.spec_sheet.value.url }}"  
+                target="_blank"  
+                download>Download Spec Sheet</a>
+            </td>
+          </tr>
+        {% endif %}
+
+      </tbody>
+    </table>
+  </div>
+{% endif %}
+
+<style>
+  .product-specs-table.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .product-specs-table.table-striped tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .product-specs-table.table-striped tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .product-specs-table.table-striped tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .product-specs-table.table-striped td {
+    padding: 12px;
+  }
+  
+  .product-specs-table.table-striped thead {
+    background-color: #f3f3f3;
+  }
+  
+  .product-specs-table.table-striped thead th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #d0d0d0;
+  }
+</style>

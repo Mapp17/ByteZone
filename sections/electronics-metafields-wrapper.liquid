@@ -1,0 +1,26 @@
+{% comment %}
+  Electronics Metafields Wrapper Section
+  This section renders the electronics-metafields snippet with schema support
+{% endcomment %}
+
+<div class="electronics-metafields-section">
+  {% render 'electronics-metafields' %}
+</div>
+
+{% schema %}
+{
+  "name": "Electronics Metafields",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section displays electronics product metafields including warranty, specifications, energy rating, and refurbished status."
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.electronics-metafields-section {
+  margin: 20px 0;
+}
+{% endstylesheet %}

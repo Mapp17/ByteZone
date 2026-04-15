@@ -15,9 +15,13 @@
         "show_specs": true,
         "specs_heading": "Technical Specifications"
       }
+    },
+    "electronics-metafields-wrapper": {
+      "type": "electronics-metafields-wrapper"
     }
   },
   "order": [
-    "main"
+    "main",
+    "electronics-metafields-wrapper"
   ]
 }
