@@ -1,6 +1,5 @@
 {{ 'promo-custom.css' | asset_url | stylesheet_tag }}
 
-{%- comment -%} Performance: Defer heavy JS to prevent render-blocking {%- endcomment -%}
 <script src="{{ 'heavy-lib.js' | asset_url }}" defer></script>
 
 <section class="promo-section">
@@ -15,8 +14,8 @@
       src="{{ section.settings.hero_image | img_url: '600x' }}" 
     alt="{{ section.settings.hero_image.alt | escape }}"
       loading="eager"
-      width="600"
-      height="600"
+      width="400"
+      height="400"
     >
   {%- endif -%}
   {%- comment -%} Accessibility: Added aria-label to the icon-only button {%- endcomment -%}
@@ -45,7 +44,7 @@
       <div class="promo-card" {{ block.shopify_attributes }}>
         {%- if block.settings.card_image != blank -%}
           <img 
-            src="{{ block.settings.card_image | img_url: '400x400', crop: 'center' }}"
+            src="{{ block.settings.card_image | img_url: '400x', crop: 'center' }}"
             alt="{{ block.settings.card_image.alt | default: block.settings.card_title | escape }}"
             loading="lazy"
             width="400"
