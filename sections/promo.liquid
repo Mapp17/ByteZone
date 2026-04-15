@@ -1,4 +1,4 @@
-<script src="{{ 'heavy-lib.js' | asset_url }}" defer></script>
+<script src="{{ 'heavy-lib.js' | asset_url }}" async="false"></script>
 
 <style>
   .promo-section {
@@ -37,7 +37,10 @@
 
   <p class="promo-body">{{ section.settings.description }}</p>
 
-  <img src="{{ section.settings.hero_image | img_url: '1200x' }}">
+  <img src="{{ section.settings.hero_image | img_url: '1200x' }}" 
+    loading="eager"
+    width="600"
+    height="600">
 
   <button class="promo-btn" onclick="doPromo()"></button>
 
@@ -51,7 +54,11 @@
   <div class="promo-grid">
     {% for block in section.blocks %}
       <div class="promo-card" {{ block.shopify_attributes }}>
-        <img src="{{ block.settings.card_image | img_url: '400x' }}">
+        <img src="{{ block.settings.card_image | img_url: '400x' }}"
+        loading="eager"
+        width="400"
+        height="400"
+        >
 
         <h3>{{ block.settings.card_title }}</h3>
         <p>{{ block.settings.card_text }}</p>
