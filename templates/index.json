@@ -99,25 +99,25 @@
         "card_BX8dcn": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/asus-vivobook-15-x1504va-laptop-1000px-v0003.webp",
-            "card_title": "Product Name",
-            "card_text": "Short description here."
+            "card_image": "shopify://shop_images/PR60170BI18492_ERU61_SAMSUNG_GALAXY_A17_DS_BLK_MTN_SP_SZ4.webp",
+            "card_title": "Samsung Galaxy A17",
+            "card_text": "The Samsung Galaxy A17 delivers reliable performance in a sleek black design."
           }
         },
         "card_LNBK4c": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/dahua-lm24-a201x-24-inch-100hz-led-monitor-1500px-v0002.webp",
-            "card_title": "Product Name",
-            "card_text": "Short description here."
+            "card_image": "shopify://shop_images/microsoft-xbox-elite-wireless-controller-v2-1500px-v1-0004.webp",
+            "card_title": "XBOX Elite Wireless Controller",
+            "card_text": "Microsoft Xbox Elite Wireless Controller V2 / Wrap-Around Rubberized Grip / 3.5mm Stereo Headset Jack / Shorter Hair Trigger Locks / Compatible for Xbox Series X|S, Xbox One, Android And iOS / FST-00004 / FST-00004"
           }
         },
         "card_7VaRaU": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/sm-t865nzaxxfa-tablets-1177107082.webp",
-            "card_title": "Product Name",
-            "card_text": "Short description here."
+            "card_image": "shopify://shop_images/promate-xwatch-r20-1-85-inch-fitness-tracker-smartwatch-black-open-box-1500px-v1-0001.webp",
+            "card_title": "Promate xWatch",
+            "card_text": "Promate xWatch R20 1.85\" Fitness Tracker Smartwatch with Bluetooth Calling"
           }
         }
       },
@@ -130,7 +130,7 @@
       "settings": {
         "title": "Big Sale Today",
         "description": "Check out our latest deals.",
-        "hero_image": "shopify://shop_images/asus-vivobook-15-x1504va-laptop-1000px-v0003.webp",
+        "hero_image": "shopify://shop_images/ByteZone_digital_logo_design.png",
         "link": "shopify://collections/multi-condition-and-premium-laptops"
       }
     },
