@@ -7,19 +7,20 @@
   <h2 class="promo-title">{{ section.settings.title | escape }}</h2>
   <p class="promo-body">{{ section.settings.description | escape }}</p>
 
-  {%- if section.settings.hero_image != blank -%}
-    <img 
+ {%- if section.settings.hero_image != blank -%}
+  <img 
     srcset="{{ section.settings.hero_image | img_url: '400x' }} 400w,
             {{ section.settings.hero_image | img_url: '800x' }} 800w,
             {{ section.settings.hero_image | img_url: '1200x' }} 1200w"
     sizes="(max-width: 400px) 400px, (max-width: 800px) 800px, 1200px"
-      src="{{ section.settings.hero_image | img_url: '1200x' }}" 
+    pre
+    src="{{ section.settings.hero_image | img_url: '1200x' }}" 
     alt="{{ section.settings.hero_image.alt | escape }}"
-      loading="eager"
-      width="1200"
-      height="600"
-    >
-  {%- endif -%}
+    loading="eager"
+    width="1200"
+    height="600"
+  >
+{%- endif -%}
   {%- comment -%} Accessibility: Added aria-label to the icon-only button {%- endcomment -%}
   <button class="promo-btn" onclick="doPromo()" aria-label="Activate promotional offer">
     Claim Offer
@@ -42,29 +43,35 @@
   </form>
 
   <div class="promo-grid">
-    {% for block in section.blocks %}
-      <div class="promo-card" {{ block.shopify_attributes }}>
-        {%- if block.settings.card_image != blank -%}
-          <img 
-            src="{{ block.settings.card_image | img_url: '400x600', crop: 'center' }}"
-            alt="{{ block.settings.card_image.alt | default: block.settings.card_title | escape }}"
-            loading="lazy"
-            width="400"
-            height="600"
-          >
-        {%- endif -%}
-
-        <h3>{{ block.settings.card_title | escape }}</h3>
-        <p>{{ block.settings.card_text | escape }}</p>
-
-        <button class="promo-btn" aria-label="View details for {{ block.settings.card_title | escape }}">
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M8 0l8 16H0z" fill="currentColor"/>
-          </svg>
-        </button>
-      </div>
-    {% endfor %}
-  </div>
+  {% for block in section.blocks %}
+    <div class="promo-card" {{ block.shopify_attributes }}>
+      {%- if block.settings.card_image != blank -%}
+        <img 
+          {%- comment -%} 
+            Lighthouse detected 186px displayed width. 
+            We provide 200px (1x) and 400px (2x for retina) 
+          {%- endcomment -%}
+          srcset="{{ block.settings.card_image | img_url: '200x' }} 1x, 
+                  {{ block.settings.card_image | img_url: '400x' }} 2x"
+          src="{{ block.settings.card_image | img_url: '200x' }}"
+          alt="{{ block.settings.card_image.alt | escape }}"
+          loading="lazy"
+          width="186"
+          height="186"
+          style="object-fit: contain;"
+        >
+      {%- endif -%}
+      
+      <h3>{{ block.settings.card_title | escape }}</h3>
+      <p>{{ block.settings.card_text | escape }}</p>
+      
+      {%- comment -%} Ensure icon buttons have labels for the 96 Accessibility score {%- endcomment -%}
+      <button class="promo-btn" aria-label="View {{ block.settings.card_title | escape }}">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0l8 16H0z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  {% endfor %}
+</div>
 </section>
 
 <script>
