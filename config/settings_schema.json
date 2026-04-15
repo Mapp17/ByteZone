@@ -2292,13 +2292,13 @@
         "type": "checkbox",
         "id": "show_announcement",
         "label": "Show announcement",
-        "default": true
+        "default": true,
       },
       {
         "type": "text",
         "id": "announcement_text",
         "label": "Announcement text",
-        "default": "Free shipping on orders over R1000"
+        "default": "Free shipping on orders over R1000",
       },
       {
         "type": "color",
