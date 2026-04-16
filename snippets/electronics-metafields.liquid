@@ -9,13 +9,17 @@
 {% assign has_energy = product.metafields.custom.energy_rating.value %} 
 {% assign has_year = product.metafields.custom.release_year.value %} 
 {% assign is_refurbished = product.metafields.custom.is_refurbished.value %} 
+{% assign has_resistance = product.metafields.custom.water_resistance.value %}
+{% assign has_manual = product.metafields.custom.technical_manual.value %}
+
+
 
 {% comment %}
   2. THE OUTER CONDITIONAL GATE
   The logic below ensures that if all variables are nil/false, the <div> is never created.
 {% endcomment %}
 
-{% if has_warranty or has_terms or has_spec or has_energy or has_year or is_refurbished %}
+{% if has_warranty or has_terms or has_spec or has_energy or has_year or is_refurbished or has_resistance or has_manual %}
   <div class="product-specs-container">
     <table class="product-specs-table table-striped" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
       <thead>
@@ -92,6 +96,24 @@
                     </span>
                     </div>
                 </div>
+            </td>
+          </tr>
+        {% endif %}
+
+        {% if has_resistance %}
+          <tr>
+            <td><strong>Water Resistance</strong></td>
+            <td>{{ has_resistance }}</td>
+          </tr>
+        {% endif %}
+
+        {% if has_manual %}
+          <tr>
+            <td><strong>Technical Manual</strong></td>
+            <td>
+              <a href="{{ product.metafields.custom.technical_manual.value.url }}" 
+                target="_blank" 
+                download>Download Manual</a>
             </td>
           </tr>
         {% endif %}

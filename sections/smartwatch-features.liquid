@@ -1,0 +1,75 @@
+{%- if section.settings.product -%}
+  {%- assign product = section.settings.product -%}
+
+  <div class="smartwatch-features">
+    <div class="product-wrapper">
+      <h1>{{ product.title }}</h1>
+      
+      <div class="product-price">
+        {%- if product.price_min == product.price_max -%}
+          {{ product.price_min | money }}
+        {%- else -%}
+          {{ product.price_min | money }} - {{ product.price_max | money }}
+        {%- endif -%}
+      </div>
+
+      <div class="product-options">
+        {%- if product.variants.size > 0 -%}
+          <ul class="variants">
+            {%- for variant in product.variants -%}
+              {%- if variant.available -%}
+                <li>
+                  <strong>{{ variant.title }}</strong>
+                  <span class="price">{{ variant.price | money }}</span>
+                  {%- if variant.sku -%}
+                    <span class="sku">SKU: {{ variant.sku }}</span>
+                  {%- endif -%}
+                  <button data-variant-id="{{ variant.id }}">Add to Cart</button>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .smartwatch-features {
+      padding: 20px;
+    }
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .variants {
+      list-style: none;
+      padding: 0;
+    }
+    .variants li {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+
+{%- else -%}
+  <div class="placeholder">
+    {{ 'sections.smartwatch_features.select_product' | t }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Smartwatch Features",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ]
+}
+{% endschema %}
